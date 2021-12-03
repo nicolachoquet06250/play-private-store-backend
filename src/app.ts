@@ -1,5 +1,5 @@
 //@ts-ignore erreur d'ide
-import { App } from "https://deno.land/x/alosaur@v0.34.0/mod.ts";
+import { App, CorsBuilder  } from "https://deno.land/x/alosaur@v0.34.0/mod.ts";
 
 //@ts-ignore erreur d'ide
 import { PageNotFound } from "./errors/index.ts";
@@ -12,6 +12,13 @@ const app = new App({
   areas: [/*HomeArea, */UserArea, AppArea, CoreArea],
   logging: false,
 });
+
+app.useCors(
+  new CorsBuilder()
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+);
 
 app.use(/^\/ws$/, new WebsocketMiddleware());
 app.use(/\/(.*)/, new PageNotFound(app.routes));
