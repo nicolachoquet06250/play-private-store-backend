@@ -16,9 +16,11 @@ const app = new App({
 app.use(/^\/ws$/, new WebsocketMiddleware());
 app.use(/\/(.*)/, new PageNotFound(app.routes));
 
+  //@ts-ignore erreur d'ide
+const { IP, PORT } = Deno.env.toObject()
+
 app.listen({
+  port: (PORT ? parseInt(PORT) : 8001),
   //@ts-ignore erreur d'ide
-  port: Deno.env.get('PORT') ?? 8001,
-  //@ts-ignore erreur d'ide
-  hostname: Deno.env.get('IP') ?? '0.0.0.0'
+  hostname: (IP ?? '0.0.0.0')
 });
