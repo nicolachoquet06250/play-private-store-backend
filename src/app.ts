@@ -17,6 +17,8 @@ app.use(/^\/ws$/, new WebsocketMiddleware());
 app.use(/\/(.*)/, new PageNotFound(app.routes));
 
 app.listen({
-  port: 8001,
-  hostname: '0.0.0.0'
+  //@ts-ignore erreur d'ide
+  port: Deno.env.get('PORT') ?? 8001,
+  //@ts-ignore erreur d'ide
+  hostname: Deno.env.get('IP') ?? '0.0.0.0'
 });
