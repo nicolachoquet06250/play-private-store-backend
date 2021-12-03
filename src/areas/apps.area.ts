@@ -38,6 +38,21 @@ class AppController {
     @Post('')
     createApp(@Body() app: IApp) {
         //console.log(app);
+        app.id = 3;
+
+        const ws: WebSocket = new WebSocket('ws://localhost:8001/ws');
+        ws.addEventListener('open', () => {
+            ws.send(JSON.stringify({
+                channel: 'notify',
+                type: 'give',
+                data: {
+                    appId: app.id
+                }
+            }));
+
+            ws.close();
+        });
+
         return new Response(
             JSON.stringify({
                 message: `L'application "${app.name}" à bien été créée`

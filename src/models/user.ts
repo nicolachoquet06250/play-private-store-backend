@@ -7,7 +7,8 @@ export interface IUser {
     lastname: string,
     email: string,
     "repo_pseudo": Record<Repos, string>,
-    password: string
+    password: string,
+    "followed_apps": Array<number>
 }
 
 export class User implements IUser {
@@ -17,7 +18,8 @@ export class User implements IUser {
         public lastname: string,
         public email: string,
         public repo_pseudo: Record<Repos, string>,
-        public password: string
+        public password: string,
+        public followed_apps: Array<number> = []
     ) {}
 
     static getAll(): Array<IUser> {
@@ -25,11 +27,11 @@ export class User implements IUser {
             new User(0, 'Nicolas', 'Choquet', 'nchoquet@norsys.fr', {
                 github: 'nicolachoquet06250',
                 gitlab: 'nicolachoquet06250'
-            }, 'nchoquet'),
+            }, 'nchoquet', [1]),
             new User(0, 'Jonhatan', 'Boyer', 'jboyer@norsys.fr', {
                 github: 'grafikart',
                 gitlab: ''
-            }, 'grafikart')
+            }, 'grafikart', [1])
         ];
     }
 
