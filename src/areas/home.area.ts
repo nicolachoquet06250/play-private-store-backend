@@ -1,5 +1,5 @@
 //@ts-ignore erreur d'ide
-import { IUser, User } from './../models/user.ts';
+import { IUser, User } from '../models/index.ts';
 
 import { 
     Area, Content, 
@@ -12,7 +12,7 @@ interface GetHomeResponse {
   Hello: string
 }
 
-@Controller("/home")
+//@Controller("/home")
 class HomeController {
 
   @Get("/hello")

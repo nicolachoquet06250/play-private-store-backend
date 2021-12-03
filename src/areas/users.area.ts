@@ -1,9 +1,10 @@
 //@ts-ignore erreur d'ide
-import { User, IUser } from './../models/user.ts';
+import { User, IUser } from '../models/index.ts';
 
 import { 
     Area, Param,
-    Controller, Get
+    Controller, Get,
+    Post, Body
     //@ts-ignore erreur d'ide
 } from "https://deno.land/x/alosaur@v0.34.0/mod.ts";
 
@@ -35,6 +36,20 @@ class UserController {
                     }
                 }
             );
+    }
+
+    @Post('')
+    createUser(@Body() user: IUser) {
+        return new Response(
+            JSON.stringify({
+                message: `L'utilisateur ${user.firstname} ${user.lastname} à bien été créé`
+            }), {
+                status: 201,
+                headers: {
+                    ['Content-Type']: 'application/json'
+                }
+            }
+        );
     }
 }
 

@@ -1,9 +1,10 @@
 //@ts-ignore erreur d'ide
-import { App, IApp } from './../models/app.ts';
+import { App, IApp } from '../models/index.ts';
 
 import { 
     Area, Param,
-    Controller, Get
+    Controller, Get,
+    Post, Body
     //@ts-ignore erreur d'ide
 } from "https://deno.land/x/alosaur@v0.34.0/mod.ts";
 
@@ -27,6 +28,21 @@ class AppController {
                 message: `L'application recherchée n'existe pas`
             }), {
                 status: 404,
+                headers: {
+                    ['Content-Type']: 'application/json'
+                }
+            }
+        );
+    }
+    
+    @Post('')
+    createApp(@Body() app: IApp) {
+        //console.log(app);
+        return new Response(
+            JSON.stringify({
+                message: `L'application "${app.name}" à bien été créée`
+            }), {
+                status: 201,
                 headers: {
                     ['Content-Type']: 'application/json'
                 }

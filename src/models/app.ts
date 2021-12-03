@@ -1,15 +1,10 @@
 //@ts-ignore problème de l'ide
 import { Repos } from "./repos.ts";
-
-interface IComment {
-    author: number,
-    comment: string,
-    note: number,
-    date: string
-}
+//@ts-ignore problème de l'ide
+import { Comment } from './comment.ts';
 
 export interface IApp {
-    id: number;
+    id?: number;
     "repo_type": Repos;
     name: string;
     nameSlug: string;
@@ -22,7 +17,7 @@ export interface IApp {
     screenshots: Array<string>;
     permissions: Array<string>;
     categories: Array<string>;
-    comments: Array<IComment>;
+    comments: Array<Comment>;
     author: number;
 }
 
@@ -42,7 +37,7 @@ export class App implements IApp {
         public screenshots: Array<string> = [],
         public permissions: Array<string> = [],
         public categories: Array<string> = [],
-        public comments: Array<IComment> = []
+        public comments: Array<Comment> = []
     ) {}
 
     static getAll() {
