@@ -15,7 +15,7 @@ const app = new App({
 
 app.useCors(
   new CorsBuilder()
-    .WithOrigin("play-private-store.localhost;localhost;play-private-store.nicolaschoquet.fr")
+    .WithOrigins("play-private-store.localhost;localhost;play-private-store.nicolaschoquet.fr")
     .AllowAnyMethod()
     .AllowAnyHeader()
 );
