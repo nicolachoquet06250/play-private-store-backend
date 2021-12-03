@@ -13,14 +13,13 @@ const app = new App({
   logging: false,
 });
 
-app.useCors(
+app.use(/^\/ws$/, new WebsocketMiddleware());
+app.use(
   new CorsBuilder()
     .WithOrigins("*")
     .AllowAnyMethod()
     .AllowAnyHeader()
 );
-
-app.use(/^\/ws$/, new WebsocketMiddleware());
 app.use(/\/(.*)/, new PageNotFound(app.routes));
 
   //@ts-ignore erreur d'ide
