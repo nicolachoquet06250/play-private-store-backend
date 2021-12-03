@@ -13,12 +13,12 @@ const app = new App({
   logging: false,
 });
 
-app.useCors(
+/*app.useCors(
   new CorsBuilder()
     .AllowAnyOrigin()
     .AllowAnyMethod()
     .AllowAnyHeader()
-);
+);*/
 
 app.use(/^\/ws$/, new WebsocketMiddleware());
 app.use(/\/(.*)/, new PageNotFound(app.routes));
