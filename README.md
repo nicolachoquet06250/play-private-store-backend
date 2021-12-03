@@ -9,5 +9,5 @@ api de play-private-store avec Deno
 
 ## RUN
  ```sh
-    deno run --allow-net --allow-read --importmap=.\imports.json --config .\tsconfig.json --unstable .\src\app.ts
+    deno run --allow-net --allow-read --importmap=./imports.json --config ./tsconfig.json --unstable ./src/app.ts
  ```
