@@ -17,6 +17,7 @@ app.use(/^\/ws$/, new WebsocketMiddleware());
 app.use(/\//,
   new CorsBuilder()
     .WithOrigins("*")
+    .AllowCredentials()
     .AllowAnyMethod()
     .AllowAnyHeader()
 );
