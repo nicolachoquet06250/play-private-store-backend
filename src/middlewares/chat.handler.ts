@@ -43,16 +43,6 @@ function dispatchBroadcast(msg: string): void {
     }
 }
 
-const areObjectEquals = function(obj1: Record<string, any>, obj2: Record<string, any>) {
-    const r1 = Object.keys(obj1).reduce((r: boolean, c: string) => 
-        obj1[c] && obj2[c] && obj1[c] === obj2[c] ? r : false, true);
-
-    const r2 = Object.keys(obj2).reduce((r: boolean, c: string) => 
-        obj1[c] && obj2[c] && obj1[c] === obj2[c] ? r : false, true);
-
-    return r1 && r2;
-}
-
 type DataType = { 
     channel: string, 
     type: ChannelType, 

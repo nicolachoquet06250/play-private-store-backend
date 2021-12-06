@@ -22,13 +22,13 @@ export type ActionCallback = (
 
 export const give_identity = (
     channel: string, 
-    type: ChannelType, 
+    _type: ChannelType, 
     data: Record<string, any>, 
     //@ts-ignore erreur d'ide
     clients: Map<number, { socket: WebSocket, user?: IUser }>, 
     dispatch: DispatchCallbackType,
-    dispatchBroadcast: DispatchCallbackType, 
-    dispatchAll: DispatchCallbackType
+    _dispatchBroadcast: DispatchCallbackType, 
+    _dispatchAll: DispatchCallbackType
 ): void => {
     const { user, id } = data;
     
@@ -54,11 +54,11 @@ export const give_notify = (
     type: ChannelType, 
     data: Record<string, any>, 
     //@ts-ignore erreur d'ide
-    clients: Map<number, { socket: WebSocket, user?: IUser }>, 
-    dispatch: DispatchCallbackType,
+    _clients: Map<number, { socket: WebSocket, user?: IUser }>, 
+    _dispatch: DispatchCallbackType,
     dispatchBroadcast: DispatchCallbackType, 
-    dispatchAll: DispatchCallbackType
-) => {
+    _dispatchAll: DispatchCallbackType
+): void => {
     const { appId } = data;
 
     dispatchBroadcast(JSON.stringify({
