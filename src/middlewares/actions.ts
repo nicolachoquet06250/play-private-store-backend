@@ -59,12 +59,7 @@ export const give_notify = (
     dispatchBroadcast: DispatchCallbackType, 
     _dispatchAll: DispatchCallbackType
 ): void => {
-    const { appId } = data;
-
     dispatchBroadcast(JSON.stringify({
-        channel, type,
-        data: {
-            appId
-        }
+        channel, type, data
     }));
 };
