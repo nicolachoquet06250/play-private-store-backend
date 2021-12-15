@@ -20,7 +20,7 @@ export type ActionCallback = (
     dispatchAll: DispatchCallbackType
 ) => void;
 
-export const give_identity = (
+export const give_identity: ActionCallback = (
     channel: string, 
     _type: ChannelType, 
     data: Record<string, any>, 
@@ -49,7 +49,7 @@ export const give_identity = (
     }));
 };
 
-export const give_notify = (
+export const give_notify: ActionCallback = (
     channel: string, 
     type: ChannelType, 
     data: Record<string, any>, 
@@ -59,6 +59,8 @@ export const give_notify = (
     dispatchBroadcast: DispatchCallbackType, 
     _dispatchAll: DispatchCallbackType
 ): void => {
+    console.log(channel, type, data);
+
     dispatchBroadcast(JSON.stringify({
         channel, type, data
     }));
